@@ -168,4 +168,7 @@ export default {
 
 <style scoped>
 /* Add your styles here */
+.slider{
+    padding-top: 0;
+}
 </style>

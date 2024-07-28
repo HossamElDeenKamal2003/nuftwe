@@ -1,83 +1,83 @@
 <template>
-    <header>
-        <div class="header-top">
-            <div class="container">
-                <div class="row">
-                    <div class="col-lg-7 col-md-12 left-item">
-                        <ul></ul>
-                    </div>
-                    <div class="col-lg-5 right-item">
-                        <ul>
-                            <li>
-                                <a href="/"><i class="fas fa-language"></i> العربية</a>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+        <a class="navbar-brand" href="/Home">
+            <img src="../../images/logo.png" alt="Logo" class="d-inline-block align-top" />
+        </a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+            aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="/Home">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/universitiesGuide">Universities Guidebooks</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/AdmissionStatus">Admissions Status</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/Scholarships">Scholarships</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/CertificatesCalculator">Certificates Calculator</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/News">News</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/signup">Signup</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/ContactUs">Contact Us</a>
+                </li>
+                <li class="nav-item">
+                    <p class="nav-link" v-if="name">{{ name }}</p>
+                </li>
+                <li class="nav-item">
+                    <button v-if="name" class="btn btn-primary btn-sm" @click="out">Logout</button>
+                </li>
+            </ul>
+            <!-- <form class="form-inline my-2 my-lg-0">
+                <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+                <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+            </form> -->
         </div>
-        <nav id="nav-head" class="header-nav">
-            <div class="container">
-                <div class="row">
-                    <div class="col-md-3 col-sm-12 nav-img">
-                        <a href="/Home">
-                            <img src="../../images/logo.png" alt="Logo" />
-                        </a>
-                        <a data-toggle="collapse" data-target="#menu" href="#menu">
-                            <i class="fas d-block d-md-none small-menu fa-bars"></i>
-                        </a>
-                    </div>
-                    <div id="menu" class="col-md-9 d-none d-md-block nav-item">
-                        <ul>
-                            <li><a href="/Home">Home</a></li>
-                            <li><a href="/universitiesGuide">Universities Guidebooks</a></li>
-                            <li><a href="/AdmissionStatus">Admissions Status</a></li>
-                            <li><a href="/Scholarships">Scholarships</a></li>
-                            <li><a href="/CertificatesCalculator">Certificates Calculator</a></li>
-                            <li><a href="/News">News</a></li>
-                            <li><a href="/signup">signup</a></li>
-                            <li><a href="/ContactUs">Contact Us</a></li>
-                            <li><p>{{name}}</p></li>
-                            <li><button v-if="name" class="btn btn-sm btn-primary" @click="out">out</button></li>
-                            <!-- <li class="auth-buttons">
-                                <a href="/profile" class="btn btn-primary">
-                                    <i class="fas fa-user-circle"></i> Profile
-                                </a>
-                            </li> -->
-                        </ul>
-                    </div>
-                </div>
-            </div>
-        </nav>
-    </header>
+    </nav>
 </template>
 
 <script>
 export default {
     name: 'HeaderComponent',
-    data(){
-        return{
-            name:'',
+    data() {
+        return {
+            name: '',
         }
     },
-    methods:{
-        out(){
+    methods: {
+        out() {
             localStorage.removeItem('name');
             this.name = '';
         }
     },
-    created(){
+    created() {
         this.name = localStorage.getItem('name');
     }
-};
+}
 </script>
 
 <style scoped>
-    a{
-        color:white;
-    }
+.nav-link {
+    color: black;
+}
 
-    li p{
-        color: red;
-    }
+.nav-link p {
+    color: red;
+}
+nav{
+    background-color: #0b0b6e !important;
+  }
 </style>
