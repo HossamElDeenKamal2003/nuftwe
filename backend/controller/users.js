@@ -33,4 +33,17 @@ const signIn = async function(req, res) {
     }
 }
 
-module.exports = { signUp, signIn };
+const getAllUsers = async function(req,res){
+    try{
+        const users = await Signup.find();
+        if(users.length === 0){
+            res.status(404).json({message:'No users found'});
+        }
+        res.status(200).json(users);
+    }catch(error){
+        console.log(error);
+        res.status(500).jsom({message: 'INTERNAL SERVER ERROR'});
+    }
+}
+
+module.exports = { signUp, signIn, getAllUsers };
