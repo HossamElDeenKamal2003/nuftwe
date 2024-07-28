@@ -57,7 +57,7 @@ export default {
             }
         },
         signUp() {
-            axios.post('http://localhost:3000/auth/signup', {
+            axios.post('https://nuft-backend.onrender.com/auth/signup', {
                 email: this.email,
                 password: this.password
             }).then(response => {
@@ -74,7 +74,7 @@ export default {
         },
 
         signIn() {
-            axios.post('http://localhost:3000/auth/signin', {
+            axios.post('https://nuft-backend.onrender.com/auth/signin', {
                 email: this.email,
                 password: this.password,
             }).then(() => {

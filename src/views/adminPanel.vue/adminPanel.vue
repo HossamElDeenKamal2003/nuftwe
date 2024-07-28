@@ -333,7 +333,7 @@ export default {
                 details_about_internationa_program: this.details_about_internationa_program
             };
 
-            axios.post('http://localhost:3000/faclity/addInternational', formData)
+            axios.post('https://nuft-backend.onrender.com/faclity/addInternational', formData)
                 .then(response => {
                     console.log(response.data);
                     alert('form sent successfully');
@@ -358,7 +358,7 @@ export default {
                 international_program_link: this.international_program_link,
                 transfer_link: this.transfer_link
             };
-            axios.post('http://localhost:3000/links/add_links', links_form_data)
+            axios.post('https://nuft-backend.onrender.com/add_links', links_form_data)
                 .then(() => {
                     alert('form sent successfully');
                 })
@@ -372,7 +372,7 @@ export default {
                 price: this.price,
                 spec: this.spec
             }
-            axios.post('http://localhost:3000/info/adddorms', form).then(()=>{
+            axios.post('https://nuft-backend.onrender.com/adddorms', form).then(()=>{
                 alert('form sent successfully');
             }).catch(error=>{
                 console.log(error);
@@ -384,7 +384,7 @@ export default {
                 price: this.price2,
                 spec: this.spec2
             }
-            axios.post('http://localhost:3000/trans/addtrans', form).then(()=>{
+            axios.post('https://nuft-backend.onrender.com/trans/addtrans', form).then(()=>{
                 alert('form sent succesffully');
             }).catch(error=>{
                 console.log(error);
@@ -394,7 +394,7 @@ export default {
             const form = {
                 text: this.news,
             }
-            axios.post('http://localhost:3000/news/addNews', form).then(()=>{
+            axios.post('https://nuft-backend.onrender.com/news/addNews', form).then(()=>{
                 console.log('news sent successfully');
                 alert("news sent succesfully");
             }).catch(error=>{
@@ -414,7 +414,7 @@ export default {
                 StemNileCertificates_second: this.StemNileCertificates_second,
                 InternationalStudents: this.InternationalStudents,
             }
-            axios.post('http://localhost:3000/admission/add', form).then(()=>{
+            axios.post('https://nuft-backend.onrender.com/admission/add', form).then(()=>{
                 alert('form sent successfully');
             }).catch(error=>{
                 console.log(error);

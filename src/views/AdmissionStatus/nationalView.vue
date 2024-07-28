@@ -178,14 +178,14 @@ export default {
             }
         },
         getAdmission(){
-            axios.get('http://localhost:3000/admission/get').then(response=>{
+            axios.get('https://nuft-backend.onrender.com/admission/get').then(response=>{
                 this.universities = response.data;
             }).catch(error=>{
                 console.log(error);
             })
         },
         getYears(){
-            axios.get('http://localhost:3000/links/get_links').then(response=>{
+            axios.get('https://nuft-backend.onrender.com/links/get_links').then(response=>{
                 this.all_data = response.data;
                 this.firstYear = this.all_data[0].first_year;
                 this.secondYear = this.all_data[0].second_year;

@@ -25,7 +25,7 @@
     },
     methods: {
       getAllusers() {
-        axios.get('http://localhost:3000/auth/getallusers')
+        axios.get('https://nuft-backend.onrender.com/auth/getallusers')
           .then(response => {
             this.allUsers = response.data;
           })

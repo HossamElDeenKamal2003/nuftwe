@@ -87,7 +87,7 @@ export default {
             return months.indexOf(monthName);
         },
         getNews(){
-            axios.get('http://localhost:3000/news/getNews').then(response=>{
+            axios.get('https://nuft-backend.onrender.com/news/getNews').then(response=>{
                 this.newsData = response.data;
             }).catch(error=>{
                 console.log(error);

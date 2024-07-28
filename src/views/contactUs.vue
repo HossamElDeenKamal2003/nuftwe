@@ -149,7 +149,7 @@ export default {
             this.errorMessages = errorMessage;
 
             if (!errorMessage) {
-                axios.post('http://localhost:3000/contact/add', this.form)
+                axios.post('https://nuft-backend.onrender.com/contact/add', this.form)
                     .then(() => {
                         console.log(this.form);
                         this.submitted = true;
