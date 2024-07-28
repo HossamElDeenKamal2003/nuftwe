@@ -18,7 +18,18 @@ import signUp from "../views/signup/signUp.vue";
 import interNational from '../views/interNational.vue';
 import AIU from '../views/internaionalUniversities.vue/AIU.vue';
 import adminPanel from "../views/adminPanel.vue/adminPanel.vue";
+import kingSalman from "../views/internaionalUniversities.vue/kingSalman.vue";
+import galalaUniversity from "../views/internaionalUniversities.vue/galalaView";
+import newMansoura from "../views/internaionalUniversities.vue/newMansoura";
+import getUsers from "../views/adminPanel.vue/users.vue";
+import ContactList from "../views/adminPanel.vue/getContact.vue";
+
 const routes = [
+  {
+    path: '/getContact',
+    name: "ContactList",
+    component: ContactList,
+  },
   {
     path:"/Home",
     name:"MainComponent",
@@ -128,7 +139,27 @@ const routes = [
     path:'/adminPanel',
     name:'adminpanel',
     component: adminPanel
-  }
+  },
+  {
+    path: '/UniversitiesGuide/UGRAD/National/International/KSIU',
+    name: 'kingSalman',
+    component: kingSalman,
+  },
+  {
+    path: '/UniversitiesGuide/UGRAD/National/International/GU',
+    name: 'galalaUniversity',
+    component: galalaUniversity,
+  },
+  {
+    path: '/UniversitiesGuide/UGRAD/National/International/NMU',
+    name: 'newMansoura',
+    component: newMansoura,
+  },
+  {
+    path: '/users',
+    name: "getUsers",
+    component: getUsers
+  },
 ];
 
 const router = createRouter({

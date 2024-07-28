@@ -32,36 +32,36 @@
                             <th rowspan="2">International Students</th>
                         </tr>
                         <tr>
-                            <th>2023</th>
-                            <th>2024</th>
-                            <th>2023</th>
-                            <th>2024</th>
-                            <th>2023</th>
-                            <th>2024</th>
+                            <th>{{ firstYear }}</th>
+                            <th>{{ secondYear }}</th>
+                            <th>{{ firstYear }}</th>
+                            <th>{{ secondYear }}</th>
+                            <th>{{ firstYear }}</th>
+                            <th>{{ secondYear }}</th>
                         </tr>
                     </thead>
                     <tbody>
                         <tr v-for="university in universities" :key="university.name">
                             <td>
-                                {{ university.name }}
+                                {{ university.faclityName }}
                                 <i class="fa fa-bell notification-bell" :class="{ active: university.isSubscribed }"
                                     @click="toggleSubscription(university)"></i>
                             </td>
-                            <td :style="{ color: getColor(university.transfer) }">{{ university.transfer }}</td>
-                            <td :style="{ color: getColor(university.thanwyaaAmaa2023) }">{{ university.thanwyaaAmaa2023
+                            <td :style="{ color: getColor(university.transfer) }">{{ university.statusTransfer}}</td>
+                            <td :style="{ color: getColor(university.thanwyaaAmaaStatus_first) }">{{ university.thanwyaaAmaaStatus_first
                                 }}</td>
-                            <td :style="{ color: getColor(university.thanwyaaAmaa2024) }">{{ university.thanwyaaAmaa2024
+                            <td :style="{ color: getColor(university.thanwyaaAmaaStatus_second) }">{{ university.thanwyaaAmaaStatus_second
                                 }}</td>
-                            <td :style="{ color: getColor(university.arabEnglishAzhariCertificates2023) }">{{
-                                university.arabEnglishAzhariCertificates2023 }}</td>
-                            <td :style="{ color: getColor(university.arabEnglishAzhariCertificates2024) }">{{
-                                university.arabEnglishAzhariCertificates2024 }}</td>
-                            <td :style="{ color: getColor(university.stemNileCertificates2023) }">{{
-                                university.stemNileCertificates2023 }}</td>
-                            <td :style="{ color: getColor(university.stemNileCertificates2024) }">{{
-                                university.stemNileCertificates2024 }}</td>
+                            <td :style="{ color: getColor(university.ArabEnglishAzhariCertificates_first) }">{{
+                                university.ArabEnglishAzhariCertificates_first}}</td>
+                            <td :style="{ color: getColor(university.ArabEnglishAzhariCertificates_second) }">{{
+                                university.ArabEnglishAzhariCertificates_second}}</td>
+                            <td :style="{ color: getColor(university.StemNileCertificates_first) }">{{
+                                university.StemNileCertificates_first }}</td>
+                            <td :style="{ color: getColor(university.StemNileCertificates_second) }">{{
+                                university.StemNileCertificates_second}}</td>
                             <td :style="{ color: getColor(university.internationalStudents) }">{{
-                                university.internationalStudents }}</td>
+                                university.InternationalStudents}}</td>
                         </tr>
                     </tbody>
                 </table>
@@ -74,6 +74,7 @@
 </template>
 
 <script>
+import axios from 'axios';
 import HeaderComponent from '../../../public/global/headerComponent.vue';
 import SmartAssistant from '../../../public/global/smartAssistant.vue';
 import FooterComponent from '../../../public/global/footerComponent.vue';
@@ -86,56 +87,59 @@ export default {
                 SmartAssistant,
                 FooterComponent,
             },
+            firstYear: '',
+            secondYear: '',
             universities: [
-                {
-                    name: 'French University in Egypt',
-                    transfer: 'Not Started',
-                    thanwyaaAmaa2023: 'Not Started',
-                    thanwyaaAmaa2024: 'Not Started',
-                    arabEnglishAzhariCertificates2023: 'Not Started',
-                    arabEnglishAzhariCertificates2024: 'Not Started',
-                    stemNileCertificates2023: 'Not Started',
-                    stemNileCertificates2024: 'Not Started',
-                    internationalStudents: 'Not Started',
-                    isSubscribed: false
-                },
-                {
-                    name: 'Nile University',
-                    transfer: 'Avilable',
-                    thanwyaaAmaa2023: 'Avilable',
-                    thanwyaaAmaa2024: 'Avilable',
-                    arabEnglishAzhariCertificates2023: 'Avilable',
-                    arabEnglishAzhariCertificates2024: 'Avilable',
-                    stemNileCertificates2023: 'Avilable',
-                    stemNileCertificates2024: 'Avilable',
-                    internationalStudents: 'Avilable',
-                    isSubscribed: false
-                },
-                {
-                    name: 'Egyptian E-Learning University',
-                    transfer: 'Ended',
-                    thanwyaaAmaa2023: 'Ended',
-                    thanwyaaAmaa2024: 'Ended',
-                    arabEnglishAzhariCertificates2023: 'Ended',
-                    arabEnglishAzhariCertificates2024: 'Ended',
-                    stemNileCertificates2023: 'Ended',
-                    stemNileCertificates2024: 'Ended',
-                    internationalStudents: 'Ended',
-                    isSubscribed: false
-                },
-                {
-                    name: 'Ain Shams National University',
-                    transfer: 'Under Construction',
-                    thanwyaaAmaa2023: 'Under Construction',
-                    thanwyaaAmaa2024: 'Under Construction',
-                    arabEnglishAzhariCertificates2023: 'Under Construction',
-                    arabEnglishAzhariCertificates2024: 'Under Construction',
-                    stemNileCertificates2023: 'Under Construction',
-                    stemNileCertificates2024: 'Under Construction',
-                    internationalStudents: 'Under Construction',
-                    isSubscribed: false
-                }
-            ]
+                // {
+                //     name: 'French University in Egypt',
+                //     transfer: 'Not Started',
+                //     thanwyaaAmaa2023: 'Not Started',
+                //     thanwyaaAmaa2024: 'Not Started',
+                //     arabEnglishAzhariCertificates2023: 'Not Started',
+                //     arabEnglishAzhariCertificates2024: 'Not Started',
+                //     stemNileCertificates2023: 'Not Started',
+                //     stemNileCertificates2024: 'Not Started',
+                //     internationalStudents: 'Not Started',
+                //     isSubscribed: false
+                // },
+                // {
+                //     name: 'Nile University',
+                //     transfer: 'Avilable',
+                //     thanwyaaAmaa2023: 'Avilable',
+                //     thanwyaaAmaa2024: 'Avilable',
+                //     arabEnglishAzhariCertificates2023: 'Avilable',
+                //     arabEnglishAzhariCertificates2024: 'Avilable',
+                //     stemNileCertificates2023: 'Avilable',
+                //     stemNileCertificates2024: 'Avilable',
+                //     internationalStudents: 'Avilable',
+                //     isSubscribed: false
+                // },
+                // {
+                //     name: 'Egyptian E-Learning University',
+                //     transfer: 'Ended',
+                //     thanwyaaAmaa2023: 'Ended',
+                //     thanwyaaAmaa2024: 'Ended',
+                //     arabEnglishAzhariCertificates2023: 'Ended',
+                //     arabEnglishAzhariCertificates2024: 'Ended',
+                //     stemNileCertificates2023: 'Ended',
+                //     stemNileCertificates2024: 'Ended',
+                //     internationalStudents: 'Ended',
+                //     isSubscribed: false
+                // },
+                // {
+                //     name: 'Ain Shams National University',
+                //     transfer: 'Under Construction',
+                //     thanwyaaAmaa2023: 'Under Construction',
+                //     thanwyaaAmaa2024: 'Under Construction',
+                //     arabEnglishAzhariCertificates2023: 'Under Construction',
+                //     arabEnglishAzhariCertificates2024: 'Under Construction',
+                //     stemNileCertificates2023: 'Under Construction',
+                //     stemNileCertificates2024: 'Under Construction',
+                //     internationalStudents: 'Under Construction',
+                //     isSubscribed: false
+                // }
+            ],
+            all_data: [],
         }
     },
     methods: {
@@ -172,7 +176,29 @@ export default {
                 default:
                     return 'inherit';
             }
+        },
+        getAdmission(){
+            axios.get('http://localhost:3000/admission/get').then(response=>{
+                this.universities = response.data;
+            }).catch(error=>{
+                console.log(error);
+            })
+        },
+        getYears(){
+            axios.get('http://localhost:3000/links/get_links').then(response=>{
+                this.all_data = response.data;
+                this.firstYear = this.all_data[0].first_year;
+                this.secondYear = this.all_data[0].second_year;
+            }).catch(error=>{
+                console.log(error);
+            })
         }
+    },
+    created(){
+        this.getAdmission();
+        this.getYears();
+        console.log(this.firstYear);
+        console.log(this.all_data);
     }
 }
 </script>

@@ -11,26 +11,6 @@
                     <label for="facality_or_international">facality_or_international</label>
                     <input type="text" id="facality_or_international" v-model="facality_or_international">
                 </div>
-                <!-- <div>
-                    <label for="registration_link">registration_link</label>
-                    <input type="text" id="registration_link" v-model="registration_link">
-                </div>
-                <div>
-                    <label for="Admission_link_egyption">Admission_link_egyption</label>
-                    <input type="text" id="Admission_link_egyption" v-model="Admission_link_egyption">
-                </div>
-                <div>
-                    <label for="Admission_link_natives">Admission_link_egyption</label>
-                    <input type="text" id="Admission_link_natives" v-model="Admission_link_natives">
-                </div>
-                <div>
-                    <label for="international_program_link">international_program_link</label>
-                    <input type="text" id="international_program_link" v-model="international_program_link">
-                </div>
-                <div>
-                    <label for="transfer_link">transfer_link</label>
-                    <input type="text" id="transfer_link" v-model="transfer_link">
-                </div> -->
                 <div>
                     <label for="programs">Programs:</label>
                     <input type="text" v-model="programs" id="programs">
@@ -167,7 +147,7 @@
             <div>
                 <label for="transfer_link">transfer_link</label>
                 <input type="text" id="transfer_link" v-model="transfer_link">
-            </div> -->
+            </div>
             <div>
                 <label for="university_Name">university_Name</label>
                 <input type="text" v-model="university_Name">
@@ -209,6 +189,50 @@
             <div>
                 <label for="news">News</label>
                 <textarea name="" id="" cols="30" rows="10" v-model="news"></textarea>
+            </div>
+            <button type="submit">Submit</button>
+        </form>
+        <h1>Admission Status</h1>
+        <form @submit.prevent="admission">
+            <div>
+                <label for="f_name">Faclity Name</label>
+                <input type="text" id="f_name" v-model="f_name">
+            </div>
+            <div>
+                <label for="spec">Specility</label>
+                <input type="text" id="spec" v-model="addmission_spec">
+            </div>
+            <div>
+                <label for="trans">statusTransfer</label>
+                <input type="text" id="trans" v-model="status_transfer">
+            </div>
+            <div>
+                <label for="thanwyaaAmaaStatus_first">thanwyaaAmaaStatus_first</label>
+                <input type="text" id="thanwyaaAmaaStatus_first" v-model="thanwyaaAmaaStatus_first">
+            </div>
+            <div>
+                <label for="thanwyaaAmaaStatus_second">thanwyaaAmaaStatus_second</label>
+                <input type="text" id="thanwyaaAmaaStatus_second" v-model="thanwyaaAmaaStatus_second">
+            </div>
+            <div>
+                <label for="ArabEnglishAzhariCertificates_first">ArabEnglishAzhariCertificates_first</label>
+                <input type="text" id="ArabEnglishAzhariCertificates_first" v-model="ArabEnglishAzhariCertificates_first">
+            </div>
+            <div>
+                <label for="ArabEnglishAzhariCertificates_second">ArabEnglishAzhariCertificates_second</label>
+                <input type="text" id="ArabEnglishAzhariCertificates_second" v-model="ArabEnglishAzhariCertificates_second">
+            </div>
+            <div>
+                <label for="StemNileCertificates_first">StemNileCertificates_first</label>
+                <input type="text" id="StemNileCertificates_first" v-model="StemNileCertificates_first">
+            </div>
+            <div>
+                <label for="StemNileCertificates_second">StemNileCertificates_second</label>
+                <input type="text" id="StemNileCertificates_second" v-model="StemNileCertificates_second">
+            </div>
+            <div>
+                <label for="InternationalStudents">InternationalStudents</label>
+                <input type="text" id="InternationalStudents" v-model="InternationalStudents">
             </div>
             <button type="submit">Submit</button>
         </form>
@@ -265,6 +289,15 @@ export default {
             price2: '',
             spec2: '',
             news: '',
+            f_name: '',
+            addmission_spec: '',
+            status_transfer: '',
+            thanwyaaAmaaStatus_first: '',
+            ArabEnglishAzhariCertificates_first: '',
+            ArabEnglishAzhariCertificates_second: '',
+            StemNileCertificates_first: '',
+            StemNileCertificates_second: '',
+            InternationalStudents: '',
         };
     },
     methods: {
@@ -364,6 +397,25 @@ export default {
             axios.post('http://localhost:3000/news/addNews', form).then(()=>{
                 console.log('news sent successfully');
                 alert("news sent succesfully");
+            }).catch(error=>{
+                console.log(error);
+            })
+        },
+        admission(){
+            const form = {
+                faclityName: this.f_name,
+                specility: this.addmission_spec,
+                statusTransfer: this.status_transfer,
+                thanwyaaAmaaStatus_first: this.thanwyaaAmaaStatus_first,
+                thanwyaaAmaaStatus_second: this.thanwyaaAmaaStatus_second,
+                ArabEnglishAzhariCertificates_first: this.ArabEnglishAzhariCertificates_first,
+                ArabEnglishAzhariCertificates_second: this.ArabEnglishAzhariCertificates_second,
+                StemNileCertificates_first: this.StemNileCertificates_first,
+                StemNileCertificates_second: this.StemNileCertificates_second,
+                InternationalStudents: this.InternationalStudents,
+            }
+            axios.post('http://localhost:3000/admission/add', form).then(()=>{
+                alert('form sent successfully');
             }).catch(error=>{
                 console.log(error);
             })
