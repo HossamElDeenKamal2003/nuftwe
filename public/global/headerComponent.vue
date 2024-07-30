@@ -35,6 +35,9 @@
                     <a class="nav-link" href="/ContactUs">Contact Us</a>
                 </li>
                 <li class="nav-item">
+                    <a class="nav-link" href="https://resumehossameldeenkamal.vercel.app/">About Programmer</a>
+                </li>
+                <li class="nav-item">
                     <p class="nav-link" v-if="name">{{ name }}</p>
                 </li>
                 <li class="nav-item">
